@@ -65,15 +65,16 @@ while True:
 
     if gameOver:
         img = imgGameOver
-        if score[1] > score[0]:
-            cv2.putText(img, str(score[1]).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX,
+        cv2.putText(img, str(score[1] + score[0]).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX,
                     2.5, (200, 0, 200), 5)
-        elif score[0] > score[1]:
-            cv2.putText(img, str(score[0]).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX,
-                        2.5, (200, 0, 200), 5)
-        elif score[0] == score[1]:
-            cv2.putText(img, "Draw", (585, 360), cv2.FONT_HERSHEY_COMPLEX,
-                        2.5, (200, 0, 200), 5)
+        # if score[1] > score[0]:
+        #
+        # elif score[0] > score[1]:
+        #     cv2.putText(img, str(score[0]).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX,
+        #                 2.5, (200, 0, 200), 5)
+        # elif score[0] == score[1]:
+        #     cv2.putText(img, "Draw", (585, 360), cv2.FONT_HERSHEY_COMPLEX,
+        #                 2.5, (200, 0, 200), 5)
 
 
     # If game not over move the ball
@@ -83,8 +84,8 @@ while True:
         if ballPos[1] >= 500 or ballPos[1] <= 10:
             speedY = -speedY
 
-        ballPos[0] += 2 *speedX
-        ballPos[1] += 2 *speedY
+        ballPos[0] += 1 *speedX
+        ballPos[1] += 1 *speedY
 
         # Draw the ball
         img = cvzone.overlayPNG(img, resized, ballPos)
